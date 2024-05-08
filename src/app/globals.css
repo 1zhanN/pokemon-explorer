@@ -11,11 +11,11 @@
   /* Set background properties */
   background-image: var(--bg-image-url);
   background-repeat: no-repeat;
-  background-size: cover; /* Cover the entire element without stretching */
-  background-position: center; /* Center the background image */
-  height: 100vh; /* Set root (html) height to full viewport height */
-  margin: 0; /* Remove default margin */
-  overflow: hidden; /* Hide overflow to prevent scrolling */
+  background-size: cover; 
+  background-position: center; 
+  /* height: 100vh; 
+  margin: 0; 
+  overflow: hidden;  */
 
   /* Create a semi-transparent overlay */
   position: relative;
@@ -37,13 +37,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(16,33,54, 0.85); /* Adjust opacity (0.3 for 30% opacity) */
-  z-index: -1; /* Position the overlay behind the background image */
+  background-color: rgb(16,33,54, 0.85); 
+  z-index: -1;
 }
 
 /* Apply Tailwind utilities or custom styles to body or other elements */
 body {
-  /* Modify body styles as needed */
+  color: aliceblue;
   margin: 0; /* Remove default body margin */
   height: 100vh; /* Set body height to full viewport height */
 }
