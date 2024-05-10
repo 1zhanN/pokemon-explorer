@@ -3,21 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Specify the background image URL */
   --bg-image-url: url("https://images.unsplash.com/photo-1627693685101-687bf0eb1222?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1920&q=75");
 
   /* Set background properties */
   background-image: var(--bg-image-url);
   background-repeat: no-repeat;
-  background-size: cover; /* Cover the entire element without stretching */
-  background-position: center; /* Center the background image */
-  height: 100vh; /* Set root (html) height to full viewport height */
-  margin: 0; /* Remove default margin */
-  overflow: hidden; /* Hide overflow to prevent scrolling */
+  background-size: cover; 
+  background-position: center; 
+  /* height: 100vh; 
+  margin: 0; 
+  overflow: hidden;  */
 
   /* Create a semi-transparent overlay */
   position: relative;
-  z-index: 1; /* Ensure the overlay is above the background image */
+  z-index: 1; 
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,4 +42,18 @@ body {
   color: white;
   margin: 0; 
   height: 100vh; 
+}
+
+/* for rounded edges */
+table {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 0 0 1px rgb(50,61,78); 
+}
+
+nav.justify-center {
+  justify-content: flex-end !important; 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 0 1px rgb(50,61,78); 
 }

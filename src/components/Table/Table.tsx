@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { useState, useEffect } from "react";
+import Item from "../Item/Item";
 import {
   Pagination,
   PaginationContent,
@@ -7,21 +8,57 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
- 
+} from "@/components/ui/pagination";
+
 const Table = () => {
+  const [reqData, setReqData] = useState<any[]>([]); // Initialize with an empty array for data
+
+  useEffect(() => {
+    const fetchDataArray = async () => {
+      try {
+        
+        const endpoints = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+        const dataArray = [];
+
+        for (const endpoint of endpoints) {
+          const url = `https://pokeapi.co/api/v2/pokemon/${endpoint}`;
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch data from ${url}`);
+          }
+
+          const data = await response.json();
+          const requiredData = {
+            id: data.id,
+            name: data.name,
+            image: data.sprites.other.dream_world.front_default,
+          };
+
+          dataArray.push(requiredData);
+        }
+
+        setReqData(dataArray); // Update state with fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchDataArray(); // Trigger data fetching when component mounts
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+
   return (
-    <div className="relative my-4 overflow-x-auto shadow-md sm:rounded-lg">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-100">
-        <thead className="text-xs text-gray-100 bg-transparent border">
+    <div className="relative my-4">
+      <table className="w-full text-left">
+        <thead className="text-sm text-gray-100">
           <tr>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-4">
               ID
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-4">
               Image
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-4">
               Name
             </th>
             <th scope="col" className="flex justify-center px-6 py-3">
@@ -30,31 +67,28 @@ const Table = () => {
           </tr>
         </thead>
         <tbody className="text-gray-100">
-          <tr className="bg-transparent border cursor-pointer hover:bg-sky-700 active:bg-gray-700">
-            <td className="px-6 py-4 font-medium whitespace-nowrap">1</td>
-            <td className="px-6 py-4">
-              <Image src="/logo.svg" width={50} height={50} alt="logo" />
-            </td>
-            <td className="px-6 py-4">Laptop</td>
-            <td className="px-6 py-4 flex items-center justify-center">
-              <button className="bg-transparent">O</button>
-            </td>
-          </tr>
-          <tr className="bg-transparent border cursor-pointer hover:bg-sky-700 active:bg-gray-700">
-            <td className="px-6 py-4 font-medium whitespace-nowrap">2</td>
-            <td className="px-6 py-4">
-              <Image src="/logo.svg" width={50} height={50} alt="logo" />
-            </td>
-            <td className="px-6 py-4">Laptop PC</td>
-            <td className="px-6 py-4 flex items-center justify-center">
-              <button className="bg-transparent">O</button>
-            </td>
-          </tr>
-          <tr className="bg-transparent border">
-            <td className="px-6 py-4 font-medium whitespace-nowrap"></td>
-          </tr>
+          {reqData.map((item) => (
+            <Item key={item.id} id={item.id} name={item.name} image={item.image} />
+          ))}
         </tbody>
       </table>
+
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };
