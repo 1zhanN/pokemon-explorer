@@ -11,41 +11,56 @@ import {
 } from "@/components/ui/pagination";
 
 const Table = () => {
-  const [reqData, setReqData] = useState<any[]>([]); // Initialize with an empty array for data
+  const [reqData, setReqData] = useState<any[]>([]); 
+  const [offset, setOffset] = useState<number>(0); 
+  const [limit, setLimit] = useState<number>(10); 
+  const [pageNo, setPageNo] = useState<number>(1); 
 
   useEffect(() => {
     const fetchDataArray = async () => {
       try {
-        
-        const endpoints = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
         const dataArray = [];
+        const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+        const response = await fetch(url);
 
-        for (const endpoint of endpoints) {
-          const url = `https://pokeapi.co/api/v2/pokemon/${endpoint}`;
-          const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data from ${url}`);
+        }
 
-          if (!response.ok) {
-            throw new Error(`Failed to fetch data from ${url}`);
-          }
+        const data = await response.json();
 
-          const data = await response.json();
+        // Extract data for each Pokemon from the response
+        for (const pokemon of data.results) {
+          const pokemonData = await fetch(pokemon.url).then((res) => res.json());
           const requiredData = {
-            id: data.id,
-            name: data.name,
-            image: data.sprites.other.dream_world.front_default,
+            id: pokemonData.id,
+            name: pokemonData.name,
+            image: pokemonData.sprites.other.dream_world.front_default,
           };
-
           dataArray.push(requiredData);
         }
 
-        setReqData(dataArray); // Update state with fetched data
+        setReqData(dataArray); 
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchDataArray(); // Trigger data fetching when component mounts
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, [offset, limit]); // Update effect when offset or limit changes
+
+  const handlePreviousPage = () => {
+    if (offset >= limit) {
+      setOffset(offset - limit);
+      setPageNo(pageNo - 1)
+    }
+  };
+
+  const handleNextPage = () => {
+    setOffset(offset + limit);
+    setPageNo(pageNo + 1)
+  };
+
 
   return (
     <div className="relative my-4">
@@ -76,16 +91,16 @@ const Table = () => {
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious onClick={handlePreviousPage} href="#" />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink href="#">{pageNo}</PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext onClick={handleNextPage} href="#" />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
