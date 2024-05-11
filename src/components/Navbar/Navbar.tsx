@@ -7,7 +7,7 @@ const Navbar = () => {
           <Image src="logo.svg" width={100} height={100} alt="logo" />
         </div>
         <div className="flex item-center">
-          <button>O</button>
+          <button><img src="/nightMode.png" width={20} height={20} alt="darkmode" /></button>
         </div>
       </div>
     </nav>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-
+import Link from "next/link";
 interface itemData {
   id: number;
   name: string;
@@ -12,12 +12,14 @@ const Item = ({id, name, image}:itemData) => {
     <>
       <tr className="bg-transparent border-t border-slate-700 cursor-pointer hover:bg-gray-700 active:bg-gray-600">
         <td className="px-6">{id}</td>
-        <td className="">
-          <Image src={image}width={50} height={50} alt="logo" />
+        <td>
+          <Image className="max-h-[50px]" src={image} width={50} height={50} alt="logo" />
         </td>
-        <td className="">{name}</td>
+        <td>{name}</td>
         <td className=" flex items-center justify-center">
-          <button className="px-6 py-4 bg-transparent items-center">O</button>
+        <Link href="/pokemon">
+          <button className="px-6 py-4 bg-transparent items-center"><img src="/eye.png" width={20} height={20} alt="eye" /></button>
+          </Link>
         </td>
       </tr>
     </>
