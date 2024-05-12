@@ -1,7 +1,7 @@
 const PokemonBaseID = ({ name, weight, height }) => {
   return (
     <>
-      <div className="flex gap-2 mx-2 py-[2px]">
+      <div className="flex gap-2 mx-2 mt-2 py-[2px]">
         <div>
           <p className="font-bold">Name:</p>
         </div>

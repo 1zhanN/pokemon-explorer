@@ -17,7 +17,7 @@ const Item = ({id, name, image}:itemData) => {
         </td>
         <td>{name}</td>
         <td className=" flex items-center justify-center">
-        <Link href="/pokemon">
+        <Link href={`/pokemon/${id}`}>
           <button className="px-6 py-4 bg-transparent items-center"><img src="/eye.png" width={20} height={20} alt="eye" /></button>
           </Link>
         </td>
