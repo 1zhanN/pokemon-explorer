@@ -2,10 +2,14 @@ import StatBar from "../StatBar/StatBar";
 import PokemonBaseID from "../PokemonBaseID/PokemonBaseID";
 import Total from "../Total/Total";
 import Type from "../Type/Type";
+import { PokemonData } from "@/app/pokemon/[pokemonId]/page";
+interface PokemanCardProps {
+  reqData: PokemonData;
+}
 
-const PokemanCard = ({ image, reqData }) => {
+const PokemanCard: React.FC<PokemanCardProps> = ({ reqData }) => {
   return (
-    <div className="flex justify-center my-4 ">
+    <div className="flex justify-center my-12 ">
         
       <div className="absolute border bg-slate-800/80 w-[280px] border-gray-700 rounded-3xl">
         <div className="bg-lime-400 rounded-t-3xl py-8 h-[150px]">
@@ -25,7 +29,7 @@ const PokemanCard = ({ image, reqData }) => {
         </div>
       </div>
       <img
-          className="relative top-0 w-[150px] "
+          className="relative top-[-80px] h-[200px] w-[180px] "
           src={reqData.image} 
           alt="pokemon" />
     </div>

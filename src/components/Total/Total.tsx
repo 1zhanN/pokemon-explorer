@@ -1,4 +1,8 @@
-const Total = ({count}) => {
+interface TotalProps {
+  count: number;
+}
+
+const Total: React.FC<TotalProps> = ({ count }) => {
   return (
     <>
       <div className="flex gap-2 mb-2 mx-2 py-2">

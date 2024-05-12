@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/pokemon/[pokemonId]/page.tsx", "src/components/PokemonBaseID/PokemonBaseID.tsx", "src/components/PokemonCard/PokemanCard.tsx", "src/components/StatBar/StatBar.tsx", "src/components/Total/Total.tsx"],
   "exclude": ["node_modules"]
 }

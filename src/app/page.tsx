@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar/Navbar"
 import Table from "@/components/Table/Table"
 import { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
 
   const [pokemonCount, setPokemonCount] = useState(0);
 
@@ -49,4 +49,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -97,7 +97,6 @@ const Table = () => {
             <PaginationLink href="#">{pageNo}</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
             <PaginationNext onClick={handleNextPage} href="#" />

@@ -4,10 +4,25 @@ import PokemanCard from "@/components/PokemonCard/PokemanCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const pokemon = ({ params }) => {
+export interface PokemonData {
+  name: string;
+  weight: number;
+  height: number;
+  hp: number;
+  attack: number;
+  defense: number;
+  special_attack: number;
+  special_defense: number;
+  speed: number;
+  image: string;
+}
 
-  const [reqData, setReqData] = useState({});
+interface PokemonParams {
+  pokemonId: string;
+}
+const Pokemon: React.FC<{ params: PokemonParams }> = ({ params }) => {
 
+  const [reqData, setReqData] = useState<PokemonData | null>(null);
   
   useEffect(() => {
     const fetchDataArray = async () => {
@@ -58,10 +73,10 @@ const pokemon = ({ params }) => {
         </div>
       </div>
       <div>
-        <PokemanCard reqData={reqData} />
+      {reqData !== null && <PokemanCard reqData={reqData} />}
       </div>
     </>
   );
 };
 
-export default pokemon;
+export default Pokemon;
