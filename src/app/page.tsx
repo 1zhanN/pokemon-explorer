@@ -30,15 +30,12 @@ const Page = () => {
       .catch(error => {
         console.error('Error:', error);
       });
-
   }, [])
  
-  
-
   return (
-  <div>
+  <div >
     <Navbar/>
-    <div className="mt-4 mx-auto max-w-[80%]">
+    <div className="mt-4 mx-auto max-w-[80%] max-sm:overflow-auto overflow-visible">
       <h2 className="text-xl">
       {pokemonCount} Pokemons In Total
     </h2>

@@ -65,7 +65,7 @@ const Pokemon: React.FC<{ params: PokemonParams }> = ({ params }) => {
     <>
       <Navbar />
       <div>
-        <div className="flex items-center gap-2 mt-4 mx-auto max-w-[80%]">
+        <div className="flex items-center gap-2 mt-4 mx-auto max-w-[80%] ">
           <Link href="/">
             <img src="/backArrow.png" width={35} height={35} alt="back" />
           </Link>

@@ -9,9 +9,9 @@ interface PokemanCardProps {
 
 const PokemanCard: React.FC<PokemanCardProps> = ({ reqData }) => {
   return (
-    <div className="flex justify-center my-12 ">
+    <div className="flex justify-center my-12">
         
-      <div className="absolute border bg-slate-800/80 w-[280px] border-gray-700 rounded-3xl">
+      <div className="absolute border bg-slate-800/80 w-[280px] border-gray-700 rounded-3xl ">
         <div className="bg-lime-400 rounded-t-3xl py-8 h-[150px]">
 
         </div>

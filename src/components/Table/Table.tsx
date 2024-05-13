@@ -85,6 +85,7 @@ const Table = () => {
           {reqData.map((item) => (
             <Item key={item.id} id={item.id} name={item.name} image={item.image} />
           ))}
+          
         </tbody>
       </table>
 
@@ -97,13 +98,14 @@ const Table = () => {
             <PaginationLink href="#">{pageNo}</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-          </PaginationItem>
-          <PaginationItem>
             <PaginationNext onClick={handleNextPage} href="#" />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+
+
     </div>
+    
   );
 };
 
