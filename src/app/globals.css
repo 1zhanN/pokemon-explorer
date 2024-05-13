@@ -33,16 +33,3 @@ nav.justify-center {
   box-shadow: 0 0 0 1px rgb(50,61,78); 
 }
 
-.light-mode {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), var(--bg-image-url);    
-  color: black;
-
-}
-
-.light-mode table {
-  box-shadow: 0 0 0 1px rgb(200, 200, 200);
-}
-
-.light-mode nav.justify-center {
-  box-shadow: 0 0 0 1px rgb(200, 200, 200);
-}
